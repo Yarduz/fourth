@@ -14,15 +14,20 @@ const darkMode = {
   modeIcon: "light_mode"
 }
 
-
+let searchedUser: string
 
 function App() {
 
   const [mode, setMode] = useState(brightMode)
 
-  function clickedSearchIcon() {
-    console.log("clicked")
+  function searchHandler(searchValue: string) {
+    searchedUser = searchValue
   }
+
+  // function clickedSearchIcon(event: any) {
+  //   let searchValue = event.target.previousElementSibling.value
+  //   console.log(searchValue)
+  // }
 
   function changeModes() {
     if (mode.modeName === "dark mode") { setMode(darkMode) }
@@ -42,10 +47,9 @@ function App() {
             </span>
           </div>
         </div>
-        <SearchBar mode={mode.modeClass} onClick={clickedSearchIcon} />
-        <div>
-
-        </div>
+        <SearchBar searchHandler={searchHandler} className="SB" mode={mode.modeClass}
+        //  onClick={clickedSearchIcon}
+        />
       </div >
     </>
   );
