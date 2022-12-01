@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import './App.css';
 import BG from './components/bg';
 import SearchBar from './components/SearchBar';
+import UserBoard from './components/UserBoard';
+import mockUser from './responseSchema.json'
+
+// import axios from 'axios';
+// axios.defaults.baseURL = 'https://api.github.com';
 
 const brightMode = {
   modeName: "dark mode",
@@ -19,9 +24,13 @@ let searchedUser: string
 function App() {
 
   const [mode, setMode] = useState(brightMode)
+  const [user, setUser] = useState(mockUser.oneOf[0])
 
   function searchHandler(searchValue: string) {
     searchedUser = searchValue
+    console.log(searchedUser)
+    console.log(mockUser.oneOf[0])
+    setUser(mockUser.oneOf[0])
   }
 
   // function clickedSearchIcon(event: any) {
@@ -50,6 +59,7 @@ function App() {
         <SearchBar searchHandler={searchHandler} className="SB" mode={mode.modeClass}
         //  onClick={clickedSearchIcon}
         />
+        <UserBoard user={mockUser.oneOf[0]} />
       </div >
     </>
   );
