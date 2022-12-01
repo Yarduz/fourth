@@ -1,22 +1,30 @@
 import React, { useState } from "react";
 import "./SearchBar.css"
 
-let saver: string;
-
 function SearchBar(props: any) {
+    const [user, setUser] = useState("")
 
     function inputChange(event: any) {
-        saver = event.target.value
+        setUser(event.target.value)
     }
 
     function searchHandler() {
-        props.searchHandler(saver);
+        fetch(`https://api.github.com/users/${user}`)
+            .then(restData => {
+                if (restData.status !== 200) {
+                    return Promise.reject("user not found")
+                }
+                else {
+                    return restData.json()
+                }
+            })
+            .then(data => props.searchHandler(data))
+            .catch(err => console.log(err))
     }
-
     return (
         <div className={`SB ${props.mode}`}>
             <h3>search username :</h3>
-            <input className="input" type="text" onChange={inputChange} />
+            <input className="input" type="text" value={user} onChange={inputChange} />
             <span className="material-symbols-outlined icon" onClick={searchHandler}>
                 search
             </span>
