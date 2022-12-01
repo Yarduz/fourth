@@ -1,0 +1,38 @@
+:root {
+    --appBgColor: rgb(230, 203, 162);
+    --appBgColorDark: rgb(68, 68, 100);
+}
+
+.SB {
+    margin: 3%;
+    padding: 3%;
+    display: flex;
+    background-color: var(--appBgColor);
+    align-items: center;
+    border-radius: 30%;
+}
+
+.input {
+    padding-left: 3%;
+    margin-left: 3%;
+    padding-right: 3%;
+    margin-right: 3%;
+    width: 100%;
+    align-self: stretch;
+    text-align: center;
+}
+
+.icon {
+    border: solid;
+    border-radius: 15%;
+    padding: 2%;
+}
+
+:active.icon {
+    background-color: black;
+    color: aliceblue;
+}
+
+h3 {
+    text-transform: capitalize;
+}
