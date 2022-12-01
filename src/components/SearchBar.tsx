@@ -15,11 +15,15 @@ function SearchBar(props: any) {
                     return Promise.reject("user not found")
                 }
                 else {
+                    props.setError(false)
                     return restData.json()
                 }
             })
             .then(data => props.searchHandler(data))
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err)
+                props.setError(true)
+            })
     }
     return (
         <div className={`SB ${props.mode}`}>

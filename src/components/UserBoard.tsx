@@ -1,10 +1,16 @@
-import { stringify } from "querystring";
 import React, { useState } from "react";
 import "./UserBoard.css"
 
 function UserBoard(props: any) {
 
-    if (props.hide == true) {
+    if (props.error === true) {
+        return (
+            <div>
+                <h1>you were wrong you fuck</h1>
+            </div>
+        )
+    }
+    if (props.hide === true) {
         return (null)
     }
     return (

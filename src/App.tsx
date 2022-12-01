@@ -23,6 +23,7 @@ function App() {
   const [searched, setSearched] = useState(true)
   const [mode, setMode] = useState(brightMode)
   const [user, setUser] = useState(mockUser.oneOf[0])
+  const [error, setError] = useState(false)
 
   function searchHandler(recievedData: any) {
     console.log(recievedData)
@@ -53,10 +54,10 @@ function App() {
             </span>
           </div>
         </div>
-        <SearchBar searchHandler={searchHandler} className="SB" mode={mode.modeClass}
+        <SearchBar searchHandler={searchHandler} setError={setError} className="SB" mode={mode.modeClass}
         //  onClick={clickedSearchIcon}
         />
-        <UserBoard hide={searched} user={user} />
+        <UserBoard hide={searched} user={user} error={error} />
       </div >
     </>
   );
